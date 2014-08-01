@@ -6,17 +6,11 @@
 
 package interfaces;
 
-import Classes.Cliente;
-import Classes.TipoCliente;
-
 /**
  *
  * @author i03
  */
-public interface Conta {
-    public static double saldo = 0;
-    public static Cliente cliente = new Cliente(null, null);
-    
+public interface Conta {  
     double getSaldo();
     void deposita(double valor);
     void saca(double valor);

@@ -7,38 +7,38 @@
 package Classes;
 
 import interfaces.Conta;
-import interfaces.ContaTributavel;
-
 /**
  *
  * @author i03
  */
-public class ContaPoupanca implements ContaTributavel{
+public class ContaPoupanca implements Conta{
+    private double saldo;
+    public static final int VALOR_PADRAO_MULTIPLICACAO = 3;
+    public static final double VALOR_DESCONTO_DEPOSITO = 0.10;
+
+    @Override
+    public void atualiza(double taxa){
+        this.saldo += ((taxa*VALOR_PADRAO_MULTIPLICACAO)*this.saldo/100);
+    }
+    
+    @Override
+    public void deposita(double valor){
+        this.saldo = valor - VALOR_DESCONTO_DEPOSITO;
+    }
 
     @Override
     public double getSaldo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.saldo;
     }
 
-    @Override
-    public void deposita(double valor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void saca(double valor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        if (this.saldo >= valor) {
+                this.saldo -= valor;
+        }
+}
 
-    @Override
-    public void atualiza(double taxaSelic) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public double calculaTributos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
     
